@@ -1,58 +1,52 @@
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
+# Ambiente virtual
 venv/
+/venv
+venv/
+**/venv/
+
+# Arquivos de configuração
 .env
 
-# Django
-*.log
-local_settings.py
+# Banco de dados SQLite
+*.sqlite3
 db.sqlite3
-db.sqlite3-journal
-media/
-staticfiles/
 
-# Node
-node_modules/
-dist/
-dist-ssr
-*.local
-.env.local
-.env.*.local
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+# Arquivos de cache Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
 
-# Editor directories and files
-.idea/
-.vscode/
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
-
-# Docker
-.docker/
-postgres_data/
-
-# System files
+# Arquivos de sistema
 .DS_Store
+
+# Arquivos de log
+*.log
+
+# Arquivos temporários
+*.tmp
+
+# Arquivos de mídia e estáticos (se gerenciados separadamente)
+/media/
+/static/
+
+# Arquivos de configuração local
+local_settings.py
+
+# Arquivos de IDE
+.vscode/
+.idea/
+
+# Arquivos de dependências
+node_modules/
+
+# Arquivos de build
+/build/
+/dist/
+
+# Arquivos de backup
+*.bak
+
+# Arquivos específicos do seu projeto
+.dockerignore
+Procfile
