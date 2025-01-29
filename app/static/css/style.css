@@ -1,0 +1,530 @@
+:root {
+    /* Cores extraídas diretamente da arte promocional */
+    --primary-color: #D4A76A;      /* Dourado vintage dos ornamentos */
+    --secondary-color: #1F4352;    /* Azul-petróleo do fundo */
+    --accent-color: #8B4513;       /* Marrom dos detalhes em madeira */
+    --text-color: #ffffff;
+    --form-bg: rgba(31, 67, 82, 0.85);  /* Azul-petróleo com transparência */
+    --input-bg: rgba(212, 167, 106, 0.1); /* Dourado suave para inputs */
+    --input-focus-bg: rgba(212, 167, 106, 0.15);
+    --border-color: #966B3D;       /* Dourado mais escuro para bordas */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--text-color);
+    overflow-x: hidden;
+    background: #000;
+}
+
+.parallax-wrapper {
+    height: 100vh;
+    perspective: 1px;
+    transform-style: preserve-3d;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    position: relative;
+}
+
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, 
+    rgba(0, 12, 17, 0.9) 0%, 
+    rgba(31, 67, 82, 0.7) 100%
+);
+    z-index: 1;
+}
+
+.glowing-text {
+    color: #D4A76A;
+    text-shadow: 0 0 10px rgba(212, 167, 106, 0.5),
+                 0 0 20px rgba(212, 167, 106, 0.3),
+                 0 0 30px rgba(212, 167, 106, 0.2);
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px rgba(212, 167, 106, 0.5),
+                     0 0 20px rgba(212, 167, 106, 0.3),
+                     0 0 30px rgba(212, 167, 106, 0.2);
+    }
+    
+    to {
+        text-shadow: 0 0 20px rgba(212, 167, 106, 0.8),
+                     0 0 30px rgba(212, 167, 106, 0.6),
+                     0 0 40px rgba(212, 167, 106, 0.4),
+                     0 0 50px rgba(212, 167, 106, 0.3),
+                     0 0 60px rgba(212, 167, 106, 0.2);
+        color: #FFD700;
+    }
+}
+
+/* Ajuste para garantir que o texto quebrado fique centralizado */
+.glowing-text br {
+    display: block;
+    content: "";
+    margin-top: 0.5em;
+}
+
+#myVideo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+}
+
+.content {
+    position: relative;
+    transform-style: preserve-3d;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.header {
+    margin-bottom: 30px;
+    animation: fadeInDown 1s ease-out;
+}
+
+.logo-container {
+    margin-bottom: 30px;
+}
+
+.malta-logo {
+    max-width: 500px;
+    height: auto;
+    filter: drop-shadow(0 0 20px rgba(212, 167, 106, 0.3));
+    transition: transform 0.3s ease;
+}
+
+.malta-logo:hover {
+    transform: scale(1.05);
+}
+
+.header h2 {
+    font-size: 2rem;
+    font-weight: 300;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.form-container {
+    width: 100%;
+    max-width: 500px;
+    padding: 40px;
+    background: var(--form-bg);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 15px 35px rgba(31, 67, 82, 0.4);
+    animation: fadeInUp 1s ease-out;
+    border: 1px solid var(--border-color);
+}
+
+#form-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.modern-input {
+    width: 100%;
+    padding: 15px 20px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    background: var(--input-bg);
+    color: var(--text-color);
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.modern-input:focus {
+    outline: none;
+    background: var(--input-focus-bg);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 15px rgba(212, 167, 106, 0.3);
+}
+
+.modern-input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.submit-btn {
+    position: relative;
+    width: 100%;
+    padding: 18px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(45deg, var(--primary-color), var(--border-color));
+    border: 2px solid rgba(212, 167, 106, 0.3);
+    color: var(--text-color);
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(212, 167, 106, 0.4);    
+}
+
+.submit-btn:active {
+    transform: translateY(1px);
+}
+
+.btn-shine {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    animation: shine 3s infinite;
+}
+
+
+.iti {
+    width: 100%;
+}
+
+.iti__flag-container {
+    z-index: 2;
+}
+
+.iti__selected-flag {
+    background-color: var(--input-bg);
+    border-radius: 12px 0 0 12px;
+    height: 100%;
+    padding: 0 10px 0 13px;
+}
+
+.iti__country-list {
+    background-color: var(--form-bg);
+    color: var(--text-color);
+    border-color: var(--border-color);
+    max-width: 100px;
+}
+
+.iti__country {
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+}
+
+.iti__country-name {
+    display: none;
+}
+
+.iti__dial-code {
+    color: var(--text-color);
+}
+
+input[type="tel"].modern-input {
+    padding-left: 80px;
+}
+
+.iti-container {
+    position: relative;
+}
+
+
+/* Animações */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes shine {
+    to {
+        left: 100%;
+    }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .malta-logo {
+        max-width: 350px;
+    }
+
+    .header h2 {
+        font-size: 1.5rem;
+    }
+
+    .content {
+        padding: 5px 20px 20px 20px;
+    }   
+
+    .form-container {
+        padding: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .malta-logo {
+        max-width: 300px;
+    }
+
+    .header h2 {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+
+    .form-container {
+        padding: 20px;
+    }
+
+    .content {
+        padding: 2px 20px 20px 20px;
+    }   
+
+    .modern-input {
+        padding: 12px 15px;
+    }
+
+    .submit-btn {
+        padding: 15px;
+        font-size: 1rem;
+    }
+}
+
+
+
+/* Mensagens de erro */
+.errorlist {
+    color: var(--primary-color);
+    list-style: none;
+    margin-top: 5px;
+    font-size: 0.9rem;
+    text-align: left;
+}
+
+/* Success page */
+.success-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: var(--secondary-color);
+    padding: 20px;
+}
+
+.success-page h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    animation: fadeInDown 1s ease-out;
+}
+
+.success-page p {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    animation: fadeInUp 1s ease-out;
+}
+
+/* Adicione isso ao seu arquivo styles.css */
+.success-message {
+    background: var(--form-bg);
+    padding: 40px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 600px;
+    width: 100%;
+    border: 1px solid rgba(212, 167, 106, 0.3);
+    animation: fadeInUp 1s ease-out;
+    background-image: url(../images/succes-bg.png);
+    background-position: top;
+    background-size: cover;
+}
+
+.success-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    animation: bounce 2s infinite;
+}
+
+.success-text {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+}
+
+.success-subtext {
+    font-size: 1.1rem;
+    opacity: 0.8;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-30px);
+    }
+    60% {
+        transform: translateY(-15px);
+    }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .success-message {
+        padding: 30px;
+        margin: 0 20px;
+    }
+    
+    .success-text {
+        font-size: 1.2rem;
+    }
+    
+    .success-subtext {
+        font-size: 1rem;
+    }
+}
+
+.form-section, .success-section {
+    width: 100%;
+    max-width: 600px;
+}
+
+@media (min-width: 1365px) {
+    .overlay {
+        min-height: 110vh;
+    }
+}
+
+@media (min-width: 1740px) {
+    .overlay {
+        min-height: 110vh;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Footer */
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px;
+    background: rgba(0, 12, 17, 0.8);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-top: 1px solid rgba(212, 167, 106, 0.2);
+    text-align: center;
+    z-index: 10;
+}
+
+.footer p {
+    color: var(--text-color);
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin: 0;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* Media query para telas menores */
+@media screen and (max-height: 600px) {
+    .footer {
+        position: relative;
+        margin-top: 20px;
+        background: transparent;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        border-top: none;
+    }
+}
+
+/* Fix para o footer em dispositivos iOS */
+@supports (-webkit-touch-callout: none) {
+    .footer {
+        padding-bottom: calc(15px + env(safe-area-inset-bottom));
+    }
+}
